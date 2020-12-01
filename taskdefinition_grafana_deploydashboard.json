@@ -1,0 +1,62 @@
+{
+    "containerDefinitions": [
+        {
+            "memory": "128",
+            "essential": true,
+            "mountPoints": [
+                {
+                    "containerPath": "/grafana-efs",
+                    "sourceVolume": "efs-grafana"
+                }
+            ],
+            "name": "grafana-deploy",
+            "image": "sibendudas/grafana-deploy:latest",
+            "environment": [
+                {
+                    "name": "BASE_URL",
+                    "value": "https://raw.githubusercontent.com/sibendu/iac-grafana/main"
+                },
+                {
+                    "name": "DASHBOARD_NAME",
+                    "value": "README.md"
+                },
+                {
+                    "name": "GRAFANA_CONFIG_FOLDER",
+                    "value": "/grafana-efs"
+                }
+            ],
+            "secrets": null,
+            "resourceRequirements": null,
+            "environmentFiles": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": null,
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            },
+            "portMappings": []
+        }
+    ],
+    "volumes": [
+        {
+            "name": "efs-grafana",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-c8400202",
+                "transitEncryption": "ENABLED"
+            }
+        }
+    ],
+    "family": "grafana-deploy-dashboard",
+    "inferenceAccelerators": [],
+    "placementConstraints": [],
+    "memory": null,
+    "cpu": null,
+    "tags": [],
+    "taskRoleArn": "arn:aws:iam::729524366783:role/ecsTaskExecutionRole"
+}

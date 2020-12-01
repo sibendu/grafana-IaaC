@@ -1,0 +1,54 @@
+{
+    "containerDefinitions": [
+        {
+            "memory": "512",
+            "portMappings": [
+                {
+                    "hostPort": 443,
+                    "containerPort": 443,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "mountPoints": [
+                {
+                    "containerPath": "/grafana/conf",
+                    "sourceVolume": "efs-grafana"
+                }
+            ],
+            "name": "grafana-custom",
+            "image": "sibendudas/grafana:latest",
+            "environment": null,
+            "secrets": null,
+            "resourceRequirements": null,
+            "environmentFiles": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": null,
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        }
+    ],
+    "volumes": [
+        {
+            "name": "efs-grafana",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-c8400202",
+                "transitEncryption": "ENABLED"
+            }
+        }
+    ],
+    "family": "grafana-custom",
+    "inferenceAccelerators": [],
+    "placementConstraints": [],
+    "memory": null,
+    "cpu": null,
+    "tags": []
+}

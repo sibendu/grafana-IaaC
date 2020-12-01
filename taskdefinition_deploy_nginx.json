@@ -1,0 +1,34 @@
+{
+    "containerDefinitions": [
+        {
+            "memory": 128,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "mountPoints": [
+                {
+                    "containerPath": "/usr/share/nginx/html/grafana",
+                    "sourceVolume": "efs-grafana"
+                }
+            ],
+            "name": "nginx",
+            "image": "nginx"
+        }
+    ],
+    "volumes": [
+        {
+            "name": "efs-grafana",
+            "efsVolumeConfiguration": {
+                "fileSystemId": "fs-c8400202",
+                "transitEncryption": "ENABLED"
+            }
+        }
+    ],
+    "family": "nginx-grafana-efs"
+}
+
