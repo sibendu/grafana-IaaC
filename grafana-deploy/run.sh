@@ -1,5 +1,12 @@
 wget $BASE_URL/$DASHBOARD_NAME
 
+if [ -d $GRAFANA_CONFIG_FOLDER ] 
+then
+    echo "Directory exists." 
+else
+    mkdir $GRAFANA_CONFIG_FOLDER
+fi
+
 cp $DASHBOARD_NAME  $GRAFANA_CONFIG_FOLDER/$DASHBOARD_NAME
 
 echo "copied file"
