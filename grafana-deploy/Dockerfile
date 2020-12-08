@@ -1,6 +1,6 @@
 FROM debian:8
 
-ENV BASE_URL   https://raw.githubusercontent.com/sibendu/iac-grafana/main
+ENV BASE_URL   https://raw.githubusercontent.com/sibendu/grafana-IaaC/main
 ENV DASHBOARD_NAME   README.md
 ENV GRAFANA_CONFIG_FOLDER   /grafana-efs 
 
